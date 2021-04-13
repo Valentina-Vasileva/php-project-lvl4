@@ -14,5 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    \Log::debug('Here is some debug information');
     return view('welcome');
 });
