@@ -20,9 +20,9 @@ jobs:
         
       - name: Run linter
         run: make lint
-        
+
       - name: Run tests
-	env:
+        env:
           ROLLBAR_TOKEN: ${{ secrets.ROLLBAR_TOKEN }}
         with:
-	  testCommand: make test
+          testCommand: make test
