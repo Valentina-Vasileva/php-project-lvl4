@@ -23,5 +23,6 @@ jobs:
         
       - name: Run tests
 	env:
-          CC_TEST_REPORTER_ID: ${{ secrets.ROLLBAR_TOKEN }}
-        with: make test
+          ROLLBAR_TOKEN: ${{ secrets.ROLLBAR_TOKEN }}
+        with:
+	  testCommand: make test
