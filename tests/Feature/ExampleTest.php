@@ -15,7 +15,7 @@ class ExampleTest extends TestCase
     public function testBasicTest()
     {
         $response = $this->get('/');
-
+        \Log::debug('Test debug message');
         $response->assertStatus(200);
     }
 }
