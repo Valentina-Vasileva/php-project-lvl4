@@ -22,4 +22,6 @@ jobs:
         run: make lint
         
       - name: Run tests
-        run: make test
+	env:
+          CC_TEST_REPORTER_ID: ${{ secrets.ROLLBAR_TOKEN }}
+        with: make test
