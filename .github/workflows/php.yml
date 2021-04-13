@@ -24,5 +24,4 @@ jobs:
       - name: Run tests
         env:
           ROLLBAR_TOKEN: ${{ secrets.ROLLBAR_TOKEN }}
-        with:
-          testCommand: make test
+        run: make test
