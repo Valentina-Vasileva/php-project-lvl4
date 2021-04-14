@@ -1,4 +1,7 @@
-{
+{   
+    "name":"vvs-php-project-lvl4",
+    "description":"project app",
+    "version":"1.0.0",
     "private": true,
     "engines": {
         "node": "14.x"
@@ -11,7 +14,7 @@
         "hot": "mix watch --hot",
         "prod": "npm run production",
         "production": "mix --production",
-        "postinstall":"npm run prod"
+        "postinstall": "npm run prod"
     },
     "devDependencies": {
         "axios": "^0.21",
