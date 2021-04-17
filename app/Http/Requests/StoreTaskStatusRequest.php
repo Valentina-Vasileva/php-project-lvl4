@@ -37,7 +37,7 @@ class StoreTaskStatusRequest extends FormRequest
                     'name' => 'required|unique:task_statuses'
                 ];
             default:
-                throw new \Exception("This method is not supported"); 
+                throw new \Exception("This method is not supported");
         }
     }
 }
