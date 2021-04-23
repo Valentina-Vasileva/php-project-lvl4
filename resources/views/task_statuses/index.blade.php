@@ -4,6 +4,11 @@
 <div class="container">
     <div class="row">
         <div class="col">
+            <a href="{{ route('task_statuses.create') }}" class="btn btn-primary">Создать статус</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
                 <table class="table table-responsive">
                     <tr>
                         <th scope="col">ID</th>
