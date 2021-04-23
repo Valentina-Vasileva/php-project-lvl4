@@ -7,6 +7,13 @@
         <div class="col">
             {{Form::open(['url' => route('task_statuses.store')])}}
                 {{Form::text('name')}}
+                @if ($errors->any())
+                    <div class="invalis-feedback">
+                        @foreach ($errors->all() as $error)
+                            {{ $error }}
+                        @endforeach
+                    </div>
+                @endif
                 {{Form::submit('Создать')}}
             {{Form::close()}}
         </div>
