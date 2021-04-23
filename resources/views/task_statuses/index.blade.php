@@ -18,10 +18,8 @@
                                 <td scope="row"> {{ $status->name }} </td>
                                 <td>{{ $status->created_at }}</td>
                                 <td>
-                                    <ul>
-                                        <li><a href="{{ route('task_statuses.destroy', ['task_status' => $status]) }}" data-method="delete" rel="nofollow" data-confirm="Вы уверены?">Удалить</a></li>
-                                        <li><a href="{{ route('task_statuses.edit', ['task_status' => $status]) }}">Редактировать</a></li>
-                                    </ul>
+                                    <a href="{{ route('task_statuses.destroy', ['task_status' => $status]) }}" data-method="delete" rel="nofollow" data-confirm="Вы уверены?">Удалить</a>
+                                    <a href="{{ route('task_statuses.edit', ['task_status' => $status]) }}">Редактировать</a>
                                 </td>
                             </tr>
                         @endforeach
