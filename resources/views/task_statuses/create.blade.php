@@ -6,24 +6,28 @@
     <div class="row">
         <div class="col">
             {{Form::open(['url' => route('task_statuses.store')])}}
-            {{Form::label('name', 'Имя')}}
-        </div>
-    </div>
-    <div class="row">
-        <div class="col col-4">
-            {{Form::text('name', '', array('class' => 'form-control'))}}
-            @if ($errors->any())
-                <div class="invalis-feedback">
-                    @foreach ($errors->all() as $error)
-                        {{ $error }}
-                    @endforeach
+            <div class="form-row">
+                <div class="col">
+                    {{Form::label('name', 'Имя')}}
                 </div>
-            @endif
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            {{Form::submit('Создать', array('class' => 'btn btn-primary mt-3'))}}
+            </div>
+            <div class="form-row">
+                <div class="col-4">
+                    {{Form::text('name', '', array('class' => 'form-control'))}}
+                    @if ($errors->any())
+                        <div class="invalis-feedback">
+                            @foreach ($errors->all() as $error)
+                                {{ $error }}
+                            @endforeach
+                        </div>
+                    @endif
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col">
+                {{Form::submit('Создать', array('class' => 'btn btn-primary mt-3'))}}
+                </div>
+            </div>
             {{Form::close()}}
         </div>
     </div>
