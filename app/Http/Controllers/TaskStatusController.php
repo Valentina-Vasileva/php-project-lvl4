@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\TaskStatus;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreTaskStatusRequest;
+use Illuminate\Support\Facades\Auth;
 
 class TaskStatusController extends Controller
 {
@@ -26,6 +27,9 @@ class TaskStatusController extends Controller
      */
     public function create()
     {
+        if (!Auth::check()) {
+            abort(403);
+        }
         $taskStatus = new TaskStatus();
         return view('task_statuses.create', compact('taskStatus'));
     }
@@ -38,6 +42,9 @@ class TaskStatusController extends Controller
      */
     public function store(StoreTaskStatusRequest $request)
     {
+        if (!Auth::check()) {
+            abort(403);
+        }
         $data = $request->validated();
 
         $taskStatus = new TaskStatus();
@@ -55,6 +62,9 @@ class TaskStatusController extends Controller
      */
     public function edit(TaskStatus $taskStatus)
     {
+        if (!Auth::check()) {
+            abort(403);
+        }
         return view('task_statuses.edit', compact('taskStatus'));
     }
 
@@ -67,6 +77,9 @@ class TaskStatusController extends Controller
      */
     public function update(StoreTaskStatusRequest $request, TaskStatus $taskStatus)
     {
+        if (!Auth::check()) {
+            abort(403);
+        }
         $data = $request->validated();
         $taskStatus->fill($data);
         $taskStatus->save();
@@ -82,6 +95,9 @@ class TaskStatusController extends Controller
      */
     public function destroy(TaskStatus $taskStatus)
     {
+        if (!Auth::check()) {
+            abort(403);
+        }
         if ($taskStatus) {
             $taskStatus->delete();
         }
