@@ -3,11 +3,13 @@
 @section('content')
 <div class="container">
     <h1 class="mb-5">Статусы</h1>
+    @if(Auth::check())
     <div class="row">
         <div class="col my-2">
             <a href="{{ route('task_statuses.create') }}" class="btn btn-primary">Создать статус</a>
         </div>
     </div>
+    @endif
     <div class="row">
         <div class="col">
             <div class="table-responsive">
