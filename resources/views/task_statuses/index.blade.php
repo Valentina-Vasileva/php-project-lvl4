@@ -16,7 +16,9 @@
                         <th scope="col">ID</th>
                         <th scope="col">Имя</th>
                         <th scope="col">Дата создания</th>
+                        @if(Auth::check())
                         <th scope="col">Действия</th>
+                        @endif
                     </tr>
                     @if ($taskStatuses)
                         @foreach ($taskStatuses as $status)
@@ -24,10 +26,12 @@
                                 <td>{{ $status->id }}</td>
                                 <td scope="row"> {{ $status->name }} </td>
                                 <td>{{ $status->created_at }}</td>
+                                @if(Auth::check())
                                 <td>
                                     <a class="text-danger" href="{{ route('task_statuses.destroy', ['task_status' => $status]) }}" data-method="delete" rel="nofollow" data-confirm="Вы уверены?">Удалить</a>
                                     <a href="{{ route('task_statuses.edit', ['task_status' => $status]) }}">Изменить</a>
                                 </td>
+                                @endif
                             </tr>
                         @endforeach
                     @endif
