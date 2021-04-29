@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Seeders\TaskStatusSeederSeeder;
+use Illuminate\Database\Seeders\TaskStatusSeeder;
 
 class DatabaseSeeder extends Seeder
 {
