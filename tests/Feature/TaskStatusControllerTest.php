@@ -10,7 +10,8 @@ use App\Models\User;
 use Illuminate\Support\Str;
 
 class TaskStatusControllerTest extends TestCase
-{   
+{
+
     private $user;
 
     protected function setUp(): void
@@ -30,7 +31,7 @@ class TaskStatusControllerTest extends TestCase
             ->get(route('task_statuses.create'));
         $response->assertOk();
     }
-    
+
     /**
      * Test of task statuses store.
      *
@@ -43,7 +44,7 @@ class TaskStatusControllerTest extends TestCase
             ->post(route('task_statuses.store'), $data);
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
-    
+
         $this->assertDatabaseHas('task_statuses', $data);
     }
 
@@ -73,7 +74,7 @@ class TaskStatusControllerTest extends TestCase
             ->patch(route('task_statuses.update', ['task_status' => $status]), $data);
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
-    
+
         $this->assertDatabaseHas('task_statuses', $data);
     }
 
