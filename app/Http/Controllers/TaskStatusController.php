@@ -81,7 +81,7 @@ class TaskStatusController extends Controller
         if (!Auth::check()) {
             abort(403);
         }
-        
+
         $data = $request->validate([
             'name' => 'required|unique:task_statuses,name,' . $taskStatus->id
         ]);
