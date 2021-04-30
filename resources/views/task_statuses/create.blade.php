@@ -15,7 +15,7 @@
                 <div class="col-4">
                     {{Form::text('name', '', array('class' => 'form-control'))}}
                     @if ($errors->any())
-                        <div class="invalis-feedback">
+                        <div class="invalid-feedback d-block">
                             @foreach ($errors->all() as $error)
                                 {{ $error }}
                             @endforeach
