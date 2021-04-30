@@ -2,13 +2,13 @@
 
 @section('content')
 <div class="container">
-    <h1 class="mb-5">Изменение статуса</h1>
+    <h1 class="mb-5">{{ __('Status edit') }}</h1>
     <div class="row">
         <div class="col">
             {{Form::model($taskStatus, ['url' => route('task_statuses.update', ['task_status' => $taskStatus]), 'method' => 'PATCH'])}}
             <div class="form-row">
                 <div class="col">
-                    {{Form::label('name', 'Имя')}}
+                    {{Form::label('name', __('Status name'))}}
                 </div>
             </div>            
             <div class="form-row">
@@ -25,7 +25,7 @@
             </div>
             <div class="form-row">
                 <div class="col">             
-                    {{Form::submit('Изменить', array('class' => 'btn btn-primary mt-3'))}}
+                    {{Form::submit(__('Edit'), array('class' => 'btn btn-primary mt-3'))}}
                 </div>
             </div>
         </div>
