@@ -50,7 +50,7 @@ class TaskStatusController extends Controller
         $taskStatus = new TaskStatus();
         $taskStatus->fill($data);
         $taskStatus->save();
-        flash('Статус задач успешно создан!')->success();
+        flash('Статус успешно создан')->success();
         return redirect()->route('task_statuses.index');
     }
 
@@ -83,7 +83,7 @@ class TaskStatusController extends Controller
         $data = $request->validated();
         $taskStatus->fill($data);
         $taskStatus->save();
-        flash('Статус задач успешно обновлён!')->success();
+        flash('Статус успешно изменён')->success();
         return redirect()->route('task_statuses.index');
     }
 
@@ -101,7 +101,7 @@ class TaskStatusController extends Controller
         if ($taskStatus) {
             $taskStatus->delete();
         }
-        flash('Статус задач успешно удалён!')->success();
+        flash('Статус успешно удалён')->success();
         return redirect()->route('task_statuses.index');
     }
 }
