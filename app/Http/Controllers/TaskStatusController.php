@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\TaskStatus;
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreTaskStatusRequest;
 use Illuminate\Support\Facades\Auth;
 
 class TaskStatusController extends Controller
@@ -37,15 +36,17 @@ class TaskStatusController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreTaskStatusRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreTaskStatusRequest $request)
+    public function store(Request $request)
     {
         if (!Auth::check()) {
             abort(403);
         }
-        $data = $request->validated();
+        $data = $request->validate([
+            'name' => 'required|unique:task_statuses'
+        ]);
 
         $taskStatus = new TaskStatus();
         $taskStatus->fill($data);
@@ -71,16 +72,20 @@ class TaskStatusController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\StoreTaskStatusRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\TaskStatus  $taskStatus
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreTaskStatusRequest $request, TaskStatus $taskStatus)
+    public function update(Request $request, TaskStatus $taskStatus)
     {
         if (!Auth::check()) {
             abort(403);
         }
-        $data = $request->validated();
+        
+        $data = $request->validate([
+            'name' => 'required|unique:task_statuses,name,' . $taskStatus->id
+        ]);
+
         $taskStatus->fill($data);
         $taskStatus->save();
         flash('Статус успешно изменён')->success();
