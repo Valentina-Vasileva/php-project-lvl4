@@ -28,5 +28,8 @@
     "Edit": "Изменить",
     "Delete": "Удалить",
     "Date of creation": "Дата создания",
-    "Actions": "Действия"
+    "Actions": "Действия",
+    "Status has been created successfully": "Статус успешно создан",
+    "Status has been updated successfully": "Статус успешно изменён",
+    "Status has been deleted successfully": "Статус успешно удалён"
 }
