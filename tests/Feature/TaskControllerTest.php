@@ -61,8 +61,8 @@ class TaskControllerTest extends TestCase
     {
         $data = Task::factory()
             ->make()
-            ->only(['name', 'description', 'status_id', 'created_by_id', 'assigned_to_id'])
-            ->all();
+            ->only(['name', 'description', 'status_id', 'created_by_id', 'assigned_to_id']);
+
         $response = $this->actingAs($this->user)
             ->post(route('tasks.store'), $data);
         $response->assertSessionHasNoErrors();
@@ -94,8 +94,8 @@ class TaskControllerTest extends TestCase
         $task = Task::factory()->create();
         $data = Task::factory()
             ->make()
-            ->only(['name', 'description', 'status_id', 'created_by_id', 'assigned_to_id'])
-            ->all();
+            ->only(['name', 'description', 'status_id', 'created_by_id', 'assigned_to_id']);
+            
         $response = $this->actingAs($this->user)
             ->patch(route('tasks.update', ['task' => $task]), $data);
         $response->assertSessionHasNoErrors();
