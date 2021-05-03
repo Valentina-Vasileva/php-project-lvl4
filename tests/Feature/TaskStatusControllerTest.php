@@ -81,7 +81,7 @@ class TaskStatusControllerTest extends TestCase
     public function testUpdate()
     {
         $status = TaskStatus::factory()->create();
-        
+
         $data = TaskStatus::factory()
         ->make()
         ->only(['name']);

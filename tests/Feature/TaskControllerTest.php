@@ -49,7 +49,7 @@ class TaskControllerTest extends TestCase
     {
         $response = $this->actingAs($this->user)
             ->get(route('tasks.create'));
-        $response->assertOk();        
+        $response->assertOk();
     }
 
     /**
@@ -81,7 +81,7 @@ class TaskControllerTest extends TestCase
         $task = Task::factory()->create();
         $response = $this->actingAs($this->user)
             ->get(route('tasks.edit', ['task' => $task]));
-        $response->assertOk(); 
+        $response->assertOk();
     }
 
     /**
@@ -95,7 +95,7 @@ class TaskControllerTest extends TestCase
         $data = Task::factory()
             ->make()
             ->only(['name', 'description', 'status_id', 'created_by_id', 'assigned_to_id']);
-            
+
         $response = $this->actingAs($this->user)
             ->patch(route('tasks.update', ['task' => $task]), $data);
         $response->assertSessionHasNoErrors();
