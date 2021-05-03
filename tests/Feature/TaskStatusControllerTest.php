@@ -7,7 +7,6 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\TaskStatus;
 use App\Models\User;
-use Illuminate\Support\Str;
 
 class TaskStatusControllerTest extends TestCase
 {
@@ -20,6 +19,16 @@ class TaskStatusControllerTest extends TestCase
         $this->user = User::factory()->create();
     }
 
+    /**
+     * Test of task statuses index.
+     *
+     * @return void
+     */
+    public function testIndex()
+    {
+        $response = $this->get(route('task_statuses.index'));
+        $response->assertOk();
+    }
     /**
      * Test of task statuses create.
      *
@@ -39,7 +48,10 @@ class TaskStatusControllerTest extends TestCase
      */
     public function testStore()
     {
-        $data = ['name' => Str::random(10)];
+        $data = TaskStatus::factory()
+        ->make()
+        ->only(['name']);
+
         $response = $this->actingAs($this->user)
             ->post(route('task_statuses.store'), $data);
         $response->assertSessionHasNoErrors();
@@ -69,7 +81,11 @@ class TaskStatusControllerTest extends TestCase
     public function testUpdate()
     {
         $status = TaskStatus::factory()->create();
-        $data = ['name' => Str::random(10)];
+        
+        $data = TaskStatus::factory()
+        ->make()
+        ->only(['name']);
+
         $response = $this->actingAs($this->user)
             ->patch(route('task_statuses.update', ['task_status' => $status]), $data);
         $response->assertSessionHasNoErrors();
