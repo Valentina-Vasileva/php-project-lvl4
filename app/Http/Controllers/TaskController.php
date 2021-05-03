@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\TaskStatus;
+use App\Models\User;
 
 class TaskController extends Controller
 {
@@ -30,7 +32,9 @@ class TaskController extends Controller
             abort(403);
         }
         $task = new Task();
-        return view('tasks.create', compact('task'));
+        $taskStatuses = TaskStatus::pluck('name', 'id')->all();
+        $users = User::pluck('name', 'id')->all();
+        return view('tasks.create', compact('task', 'taskStatuses', 'users'));
     }
 
     /**

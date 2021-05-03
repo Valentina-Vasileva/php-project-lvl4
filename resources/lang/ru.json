@@ -31,5 +31,10 @@
     "Actions": "Действия",
     "Status has been created successfully": "Статус успешно создан",
     "Status has been updated successfully": "Статус успешно изменён",
-    "Status has been deleted successfully": "Статус успешно удалён"
+    "Status has been deleted successfully": "Статус успешно удалён",
+    "Create task": "Создать задачу",
+    "Task name": "Имя",
+    "Description": "Описание",
+    "Status": "Статус",
+    "Executor": "Исполнитель"
 }
