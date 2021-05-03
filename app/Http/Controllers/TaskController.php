@@ -63,7 +63,7 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
-        //
+        return view('tasks.show', compact('task'));
     }
 
     /**
@@ -77,7 +77,7 @@ class TaskController extends Controller
         if (!Auth::check()) {
             abort(403);
         }
-        return view('tasks', compact('task'));
+        return view('tasks.edit', compact('task'));
     }
 
     /**
