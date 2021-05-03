@@ -24,3 +24,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource('task_statuses', TaskStatusController::class)
     ->except(['show']);
+
+Route::resource('tasks', TaskController::class);

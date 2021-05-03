@@ -14,7 +14,8 @@ class TaskController extends Controller
      */
     public function index()
     {
-        //
+        $tasks = Tasks::orderBy('id', 'desc')->paginate();
+        return view('tasks.index', compact('tasks'));
     }
 
     /**
@@ -24,7 +25,11 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //
+        if (!Auth::check()) {
+            abort(403);
+        }
+        $task = new Task();
+        return view('tasks.create', compact('task'));
     }
 
     /**
@@ -35,7 +40,18 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if (!Auth::check()) {
+            abort(403);
+        }
+        $data = $request->validate([
+            'name' => 'required|unique:tasks'
+        ]);
+
+        $taskStatus = new Task();
+        $taskStatus->fill($data);
+        $taskStatus->save();
+        flash(__('Task has been added successfully'))->success();
+        return redirect()->route('tasks.index');
     }
 
     /**
@@ -57,7 +73,10 @@ class TaskController extends Controller
      */
     public function edit(Task $task)
     {
-        //
+        if (!Auth::check()) {
+            abort(403);
+        }
+        return view('tasks', compact('task'));
     }
 
     /**
@@ -69,7 +88,18 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-        //
+        if (!Auth::check()) {
+            abort(403);
+        }
+
+        $data = $request->validate([
+            'name' => 'required|unique:tasks,name,' . $task->id
+        ]);
+
+        $task->fill($data);
+        $task->save();
+        flash(__('Task has been updated successfully'))->success();
+        return redirect()->route('tasks.index');
     }
 
     /**
@@ -80,6 +110,15 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
-        //
+        if (Auth::id() !== $task->id) {
+            abort(403);
+        }
+
+        if ($task) {
+            $task->delete();
+        }
+
+        flash(__('Task has been deleted successfully'))->success();
+        return redirect()->route('tasks.index');
     }
 }
