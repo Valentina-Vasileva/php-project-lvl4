@@ -7,20 +7,18 @@
         <div class="col">
             {{Form::model($taskStatus, ['url' => route('task_statuses.update', ['task_status' => $taskStatus]), 'method' => 'PATCH'])}}
             <div class="form-row">
-                <div class="col">
-                    {{Form::label('name', __('Status name'))}}
-                </div>
-            </div>            
-            <div class="form-row">
                 <div class="col-4">
-                    {{Form::text('name', $taskStatus->name, array('class' => 'form-control'))}}
-                    @if ($errors->any())
-                        <div class="invalid-feedback d-block">
-                            @foreach ($errors->all() as $error)
-                                {{ $error }}
-                            @endforeach
-                        </div>
-                    @endif
+                    <div class="form-group">
+                        {{Form::label('name', __('Status name'))}}
+                        {{Form::text('name', $taskStatus->name, array('class' => 'form-control'))}}
+                        @if ($errors->any())
+                            <div class="invalid-feedback d-block">
+                                @foreach ($errors->all() as $error)
+                                    {{ $error }}
+                                @endforeach
+                            </div>
+                        @endif
+                    </div>
                 </div>
             </div>
             <div class="form-row">
