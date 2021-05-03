@@ -52,9 +52,9 @@ class TaskController extends Controller
             'name' => 'required|unique:tasks'
         ]);
 
-        $taskStatus = new Task();
-        $taskStatus->fill($data);
-        $taskStatus->save();
+        $task = new Task();
+        $task->fill($data);
+        $task->save();
         flash(__('Task has been added successfully'))->success();
         return redirect()->route('tasks.index');
     }
