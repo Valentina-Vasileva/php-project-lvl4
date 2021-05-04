@@ -36,5 +36,6 @@
     "Task name": "Имя",
     "Description": "Описание",
     "Status": "Статус",
-    "Executor": "Исполнитель"
+    "Executor": "Исполнитель",
+    "Edit task": "Изменение задачи"
 }

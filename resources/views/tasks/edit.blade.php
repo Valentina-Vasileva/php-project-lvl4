@@ -10,7 +10,7 @@
                 <div class="col-6">
                     <div class="form-group">
                         {{Form::label('name', __('Task name'))}}
-                        {{Form::text('name', '', array('class' => 'form-control'))}}
+                        {{Form::text('name', $task->name, array('class' => 'form-control'))}}
                         @if ($errors->any())
                             <div class="invalid-feedback d-block">
                                 @foreach ($errors->all() as $error)
