@@ -55,12 +55,13 @@ class TaskController extends Controller
             'assigned_to_id' => 'nullable|integer'
         ]);
 
-        $user = Auth::user();;
-        
+        $user = Auth::user();
+        ;
+
         $task = $user->tasks()->make();
         $task->fill($data);
         $task->creator()->associate($user);
-        
+
         if (!is_null($data['assigned_to_id'])) {
             $executor = User::findOrFail($data['assigned_to_id']);
             $task->executor()->associate($executor);
