@@ -17,7 +17,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks = Tasks::orderBy('id', 'desc')->paginate();
+        $tasks = Task::orderBy('id', 'desc')->paginate();
         return view('tasks.index', compact('tasks'));
     }
 
@@ -49,11 +49,15 @@ class TaskController extends Controller
             abort(403);
         }
         $data = $request->validate([
-            'name' => 'required|unique:tasks'
+            'name' => 'required|unique:tasks',
+            'status_id' => 'required',
+            'description' => 'nullable|string',
+            'assigned_to_id' => 'nullable|integer'
         ]);
 
         $task = new Task();
-        $task->fill($data);
+        $creatorId = ['created_by_id' => Auth::id()];
+        $task->fill(array_merge($data, $creatorId));
         $task->save();
         flash(__('Task has been added successfully'))->success();
         return redirect()->route('tasks.index');
@@ -81,7 +85,10 @@ class TaskController extends Controller
         if (!Auth::check()) {
             abort(403);
         }
-        return view('tasks.edit', compact('task'));
+
+        $taskStatuses = TaskStatus::pluck('name', 'id')->all();
+        $users = User::pluck('name', 'id')->all();
+        return view('tasks.edit', compact('task', 'taskStatuses', 'users'));
     }
 
     /**
@@ -115,11 +122,10 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
-        if (Auth::id() !== $task->id) {
-            abort(403);
-        }
-
         if ($task) {
+            if (Auth::id() !== $task->id) {
+                abort(403);
+            }
             $task->delete();
         }
 
