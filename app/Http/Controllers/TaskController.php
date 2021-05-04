@@ -55,10 +55,19 @@ class TaskController extends Controller
             'assigned_to_id' => 'nullable|integer'
         ]);
 
-        $task = new Task();
-        $creatorId = ['created_by_id' => Auth::id()];
-        $task->fill(array_merge($data, $creatorId));
+        $user = Auth::user();;
+        
+        $task = $user->tasks()->make();
+        $task->fill($data);
+        $task->creator()->associate($user);
+        
+        if (!is_null($data['assigned_to_id'])) {
+            $executor = User::findOrFail($data['assigned_to_id']);
+            $task->executor()->associate($executor);
+        }
+
         $task->save();
+
         flash(__('Task has been added successfully'))->success();
         return redirect()->route('tasks.index');
     }
@@ -123,7 +132,7 @@ class TaskController extends Controller
     public function destroy(Task $task)
     {
         if ($task) {
-            if (Auth::id() !== $task->id) {
+            if (Auth::id() !== $task->creator->id) {
                 abort(403);
             }
             $task->delete();
