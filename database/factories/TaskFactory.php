@@ -5,6 +5,8 @@ namespace Database\Factories;
 use App\Models\Task;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+use App\Models\TaskStatus;
+use App\Models\User;
 
 class TaskFactory extends Factory
 {
@@ -22,11 +24,13 @@ class TaskFactory extends Factory
      */
     public function definition()
     {
+        $statusId = TaskStatus::inRandomOrder()->first();
+
         return [
             'name' => $this->faker->name,
-            'status_id' => 1,
+            'status_id' => $statusId->id,
             'description' => Str::random(10),
-            'created_by_id' => 1
+            'created_by_id' => 1,
         ];
     }
 }

@@ -63,8 +63,10 @@ class TaskControllerTest extends TestCase
             ->make()
             ->only(['name', 'description', 'status_id', 'created_by_id', 'assigned_to_id']);
 
-        $response = $this->actingAs($this->user)
+        $user = User::find(1);
+        $response = $this->actingAs($user)
             ->post(route('tasks.store'), $data);
+
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
 
