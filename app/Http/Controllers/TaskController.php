@@ -10,6 +10,11 @@ use App\Models\User;
 
 class TaskController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Task::class, 'task');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -28,9 +33,6 @@ class TaskController extends Controller
      */
     public function create()
     {
-        if (!Auth::check()) {
-            abort(403);
-        }
         $task = new Task();
         $taskStatuses = TaskStatus::pluck('name', 'id')->all();
         $users = User::pluck('name', 'id')->all();
@@ -45,9 +47,6 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        if (!Auth::check()) {
-            abort(403);
-        }
         $data = $request->validate([
             'name' => 'required|unique:tasks',
             'status_id' => 'required',
@@ -84,10 +83,6 @@ class TaskController extends Controller
      */
     public function edit(Task $task)
     {
-        if (!Auth::check()) {
-            abort(403);
-        }
-
         $taskStatuses = TaskStatus::pluck('name', 'id')->all();
         $users = User::pluck('name', 'id')->all();
         return view('tasks.edit', compact('task', 'taskStatuses', 'users'));
@@ -102,10 +97,6 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-        if (!Auth::check()) {
-            abort(403);
-        }
-
         $data = $request->validate([
             'name' => 'required|unique:tasks,name,' . $task->id,
             'status_id' => 'required',
@@ -129,9 +120,6 @@ class TaskController extends Controller
     public function destroy(Task $task)
     {
         if ($task) {
-            if (Auth::id() !== $task->creator->id) {
-                abort(403);
-            }
             $task->delete();
         }
 
