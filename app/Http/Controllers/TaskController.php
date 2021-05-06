@@ -107,11 +107,15 @@ class TaskController extends Controller
         }
 
         $data = $request->validate([
-            'name' => 'required|unique:tasks,name,' . $task->id
+            'name' => 'required|unique:tasks,name,' . $task->id,
+            'status_id' => 'required',
+            'description' => 'nullable|string',
+            'assigned_to_id' => 'nullable|integer'
         ]);
 
         $task->fill($data);
         $task->save();
+
         flash(__('Task has been updated successfully'))->success();
         return redirect()->route('tasks.index');
     }

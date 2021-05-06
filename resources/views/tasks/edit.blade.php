@@ -5,7 +5,7 @@
     <h1 class="mb-5">{{ __('Edit task') }}</h1>
     <div class="row">
         <div class="col">
-            {{Form::model($task, ['url' => route('tasks.update', ['task' => $task])])}}
+            {{Form::model($task, ['url' => route('tasks.update', ['task' => $task]), 'method' => 'PATCH'])}}
             <div class="form-row">
                 <div class="col-6">
                     <div class="form-group">
