@@ -37,8 +37,12 @@
                                 <td>{{ $task->created_at }}</td>
                                 @if(Auth::check())
                                 <td>
-                                    <a class="text-danger" href="{{ route('tasks.destroy', ['task' => $task->id]) }}" data-method="delete" rel="nofollow" data-confirm="Вы уверены?">{{ __('Delete') }}</a>
+                                    @can('delete', $task)
+                                        <a class="text-danger" href="{{ route('tasks.destroy', ['task' => $task->id]) }}" data-method="delete" rel="nofollow" data-confirm="Вы уверены?">{{ __('Delete') }}</a>
+                                    @endcan
+                                    @can('update', $task)
                                     <a href="{{ route('tasks.edit', ['task' => $task->id]) }}">{{ __('Edit') }}</a>
+                                    @endcan
                                 </td>
                                 @endif
                             </tr>
