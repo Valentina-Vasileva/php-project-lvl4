@@ -56,11 +56,9 @@ class TaskController extends Controller
         ]);
 
         $user = Auth::user();
-        ;
 
         $task = $user->tasks()->make();
         $task->fill($data);
-        $task->creator()->associate($user);
         $task->save();
 
         flash(__('Task has been added successfully'))->success();
