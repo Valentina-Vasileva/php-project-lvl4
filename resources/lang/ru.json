@@ -22,7 +22,7 @@
     "Create": "Создать",
     "Task manager":"Менеджер задач",
     "Tasks": "Задачи",
-    "Tags": "Метки",
+    "Labels": "Метки",
     "Statuses": "Статусы",
     "Status edit": "Изменение статуса",
     "Edit": "Изменить",
@@ -42,5 +42,12 @@
     "View a task": "Просмотр задачи",
     "Task has been added successfully": "Задача успешно создана",
     "Task has been updated successfully":"Задача успешно изменена",
-    "Task has been deleted successfully": "Задача успешно удалена"
+    "Task has been deleted successfully": "Задача успешно удалена",
+    "Failed to delete label": "Не удалось удалить метку",
+    "Create label": "Создать метку",
+    "Label name": "Имя",
+    "Edit label": "Изменение метки",
+    "Label has been added successfully": "Метка успешно создана",
+    "Label has been updated successfully":"Метка успешно изменена",
+    "Label has been deleted successfully": "Метка успешно удалена"
 }
