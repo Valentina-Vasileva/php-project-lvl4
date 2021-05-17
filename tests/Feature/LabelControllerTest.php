@@ -81,7 +81,8 @@ class LabelControllerTest extends TestCase
     public function testUpdate()
     {
         $label = Label::factory()->create();
-        $data = Label::factory()->make();
+        $data = Label::factory()->make()
+            ->only(['name', 'description']);
         $response = $this->actingAs($this->user)
             ->patch(route('labels.update', ['label' => $label]), $data);
 
