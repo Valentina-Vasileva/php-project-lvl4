@@ -27,3 +27,6 @@ Route::resource('task_statuses', TaskStatusController::class)
     ->except(['show']);
 
 Route::resource('tasks', TaskController::class);
+
+Route::resource('lables', LabelController::class)
+    ->except(['show']);
