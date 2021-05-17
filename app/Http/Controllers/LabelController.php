@@ -75,7 +75,8 @@ class LabelController extends Controller
     public function update(Request $request, Label $label)
     {
         $data = $request->validate([
-            'name' => 'required|unique:labels,name,' . $label->id
+            'name' => 'required|unique:labels,name,' . $label->id,
+            'description' => 'nullable|string'
         ]);
 
         $label->fill($data);
@@ -93,12 +94,8 @@ class LabelController extends Controller
     public function destroy(Label $label)
     {
         if ($label) {
-            if ($label->tasks()->exists()) {
-                flash(__('Failed to delete label'))->error();
-            } else {
-                $label->delete();
-                flash(__('Label has been deleted successfully'))->success();
-            }
+            $label->delete();
+            flash(__('Label has been deleted successfully'))->success();
         }
         return redirect()->route('labels.index');
     }
