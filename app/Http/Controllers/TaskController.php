@@ -53,13 +53,14 @@ class TaskController extends Controller
             'name' => 'required|unique:tasks',
             'status_id' => 'required',
             'description' => 'nullable|string',
-            'assigned_to_id' => 'nullable|integer'
+            'assigned_to_id' => 'nullable|integer',
+            'labels' => 'nullable|array'
         ]);
 
         $user = Auth::user();
-
         $task = $user->tasks()->make();
         $task->fill($data);
+        $task->labels()->sync($data['labels']);
         $task->save();
 
         flash(__('Task has been added successfully'))->success();
@@ -104,10 +105,12 @@ class TaskController extends Controller
             'name' => 'required|unique:tasks,name,' . $task->id,
             'status_id' => 'required',
             'description' => 'nullable|string',
-            'assigned_to_id' => 'nullable|integer'
+            'assigned_to_id' => 'nullable|integer',
+            'labels' => 'nullable|array'
         ]);
 
         $task->fill($data);
+        $task->labels()->sync($data['labels']);
         $task->save();
 
         flash(__('Task has been updated successfully'))->success();
