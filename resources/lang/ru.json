@@ -35,6 +35,7 @@
     "Failed to delete status": "Не удалось удалить статус",
     "Create task": "Создать задачу",
     "Task name": "Имя",
+    "Author": "Автор",
     "Description": "Описание",
     "Status": "Статус",
     "Executor": "Исполнитель",
