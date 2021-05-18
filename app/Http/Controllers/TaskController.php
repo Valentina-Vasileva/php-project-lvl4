@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\TaskStatus;
 use App\Models\User;
+use App\Models\Label;
 
 class TaskController extends Controller
 {
@@ -36,7 +37,8 @@ class TaskController extends Controller
         $task = new Task();
         $taskStatuses = TaskStatus::pluck('name', 'id')->all();
         $users = User::pluck('name', 'id')->all();
-        return view('tasks.create', compact('task', 'taskStatuses', 'users'));
+        $labels = Label::pluck('name', 'id')->all();
+        return view('tasks.create', compact('task', 'taskStatuses', 'users', 'labels'));
     }
 
     /**
