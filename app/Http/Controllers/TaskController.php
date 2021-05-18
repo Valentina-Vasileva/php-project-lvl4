@@ -60,8 +60,8 @@ class TaskController extends Controller
         $user = Auth::user();
         $task = $user->tasks()->make();
         $task->fill($data);
-        $task->labels()->sync($data['labels']);
         $task->save();
+        $task->labels()->sync($data['labels']);
 
         flash(__('Task has been added successfully'))->success();
         return redirect()->route('tasks.index');
