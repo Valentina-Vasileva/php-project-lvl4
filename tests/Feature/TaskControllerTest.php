@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\User;
 use App\Models\Task;
+use App\Models\Label;
 
 class TaskControllerTest extends TestCase
 {
@@ -59,10 +60,12 @@ class TaskControllerTest extends TestCase
      */
     public function testStore()
     {
-        $data = Task::factory()
+        $task = Task::factory()
             ->make()
             ->only(['name', 'description', 'status_id', 'created_by_id', 'assigned_to_id']);
 
+        $label = Label::factory()->create();
+        $data = array_merge($task, ['labels' => [$label->id]]);
         $user = User::find(1);
         $response = $this->actingAs($user)
             ->post(route('tasks.store'), $data);
@@ -70,7 +73,7 @@ class TaskControllerTest extends TestCase
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
 
-        $this->assertDatabaseHas('tasks', $data);
+        $this->assertDatabaseHas('tasks', $task);
     }
 
     /**
@@ -93,17 +96,21 @@ class TaskControllerTest extends TestCase
      */
     public function testUpdate()
     {
-        $task = Task::factory()->create();
-        $data = Task::factory()
+        $oldTask = Task::factory()->create();
+        $label = Label::factory()->create();
+        $newTask = Task::factory()
             ->make()
             ->only(['name', 'description', 'status_id', 'created_by_id', 'assigned_to_id']);
 
+        $data = array_merge($newTask, ['labels' => [$label->id]]);
         $response = $this->actingAs($this->user)
-            ->patch(route('tasks.update', ['task' => $task]), $data);
+            ->patch(route('tasks.update', ['task' => $oldTask]), $data);
+
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
 
-        $this->assertDatabaseHas('tasks', $data);
+        $this->assertDatabaseHas('tasks', $newTask);
+        $this->assertDatabaseHas('label_task', ['label_id' => $label->id, 'task_id' => $oldTask->id]);
     }
 
     /**
