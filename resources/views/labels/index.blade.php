@@ -18,6 +18,7 @@
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">{{ __('Label name') }}</th>
+                        <th scope="col">{{ __('Description') }}</th>
                         <th scope="col">{{ __('Date of creation') }}</th>
                         @if(Auth::check())
                         <th scope="col">{{ __('Actions') }}</th>
@@ -27,7 +28,8 @@
                         @foreach ($labels as $label)
                             <tr>
                                 <td>{{ $label->id }}</td>
-                                <td scope="row"> {{ $label->name }} </td>
+                                <td scope="row">{{ $label->name }}</td>
+                                <td>{{ $label->description }}</td>
                                 <td>{{ $label->created_at }}</td>
                                 @if(Auth::check())
                                 <td>
