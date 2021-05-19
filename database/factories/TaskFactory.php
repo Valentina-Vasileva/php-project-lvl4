@@ -24,13 +24,16 @@ class TaskFactory extends Factory
      */
     public function definition()
     {
-        $statusId = TaskStatus::inRandomOrder()->first();
+        $status = TaskStatus::inRandomOrder()->first();
+        $user = User::inRandomOrder()->first();
+        $executor = User::inRandomOrder()->first();
 
         return [
             'name' => $this->faker->name,
-            'status_id' => $statusId->id,
+            'status_id' => $status->id,
             'description' => Str::random(10),
-            'created_by_id' => 1,
+            'created_by_id' => $user->id,
+            'assigned_to_id' => $executor->id
         ];
     }
 }
