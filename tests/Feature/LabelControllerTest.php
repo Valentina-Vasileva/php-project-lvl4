@@ -68,6 +68,7 @@ class LabelControllerTest extends TestCase
     public function testEdit()
     {
         $label = Label::factory()->create();
+
         $response = $this->actingAs($this->user)
             ->get(route('labels.edit', ['label' => $label]));
         $response->assertOk();
@@ -83,9 +84,9 @@ class LabelControllerTest extends TestCase
         $label = Label::factory()->create();
         $data = Label::factory()->make()
             ->only(['name', 'description']);
+
         $response = $this->actingAs($this->user)
             ->patch(route('labels.update', ['label' => $label]), $data);
-
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
 
@@ -100,6 +101,7 @@ class LabelControllerTest extends TestCase
     public function testDelete()
     {
         $label = Label::factory()->create();
+
         $response = $this->actingAs($this->user)
             ->delete(route('labels.destroy', ['label' => $label]));
         $response->assertSessionHasNoErrors();

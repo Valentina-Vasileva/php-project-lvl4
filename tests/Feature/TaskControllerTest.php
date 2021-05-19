@@ -71,7 +71,6 @@ class TaskControllerTest extends TestCase
 
         $response = $this->actingAs($this->user)
             ->post(route('tasks.store'), $data);
-
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
 
@@ -109,7 +108,6 @@ class TaskControllerTest extends TestCase
 
         $response = $this->actingAs($this->user)
             ->patch(route('tasks.update', ['task' => $oldTask]), $data);
-
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
 
@@ -129,7 +127,6 @@ class TaskControllerTest extends TestCase
 
         $response = $this->actingAs($user)
             ->delete(route('tasks.destroy', ['task' => $task]));
-
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
 

@@ -68,6 +68,7 @@ class TaskStatusControllerTest extends TestCase
     public function testEdit()
     {
         $status = TaskStatus::factory()->create();
+
         $response = $this->actingAs($this->user)
             ->get(route('task_statuses.edit', ['task_status' => $status]));
         $response->assertOk();
@@ -102,6 +103,7 @@ class TaskStatusControllerTest extends TestCase
     public function testDelete()
     {
         $taskStatus = TaskStatus::factory()->create();
+
         $response = $this->actingAs($this->user)
             ->delete(route('task_statuses.destroy', ['task_status' => $taskStatus]));
         $response->assertSessionHasNoErrors();
