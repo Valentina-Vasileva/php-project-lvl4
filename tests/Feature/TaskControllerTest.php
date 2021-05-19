@@ -8,6 +8,7 @@ use Tests\TestCase;
 use App\Models\User;
 use App\Models\Task;
 use App\Models\Label;
+use App\Models\TaskStatus;
 
 class TaskControllerTest extends TestCase
 {
@@ -17,6 +18,7 @@ class TaskControllerTest extends TestCase
     {
         parent::setUp();
         $this->user = User::factory()->create();
+        TaskStatus::factory()->create();
     }
     /**
      * Test of tasks index.
