@@ -37,6 +37,7 @@ class TaskControllerTest extends TestCase
     public function testShow()
     {
         $task = Task::factory()->create();
+
         $response = $this->get(route('tasks.show', ['task' => $task]));
         $response->assertOk();
     }
@@ -62,18 +63,19 @@ class TaskControllerTest extends TestCase
     {
         $task = Task::factory()
             ->make()
-            ->only(['name', 'description', 'status_id', 'created_by_id', 'assigned_to_id']);
+            ->only(['name', 'description', 'status_id', 'assigned_to_id']);
 
         $label = Label::factory()->create();
+
         $data = array_merge($task, ['labels' => [$label->id]]);
-        $user = User::find(1);
-        $response = $this->actingAs($user)
+
+        $response = $this->actingAs($this->user)
             ->post(route('tasks.store'), $data);
 
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
 
-        $this->assertDatabaseHas('tasks', $task);
+        $this->assertDatabaseHas('tasks', array_merge($task, ['created_by_id' => $this->user->id]));
     }
 
     /**
@@ -84,6 +86,7 @@ class TaskControllerTest extends TestCase
     public function testEdit()
     {
         $task = Task::factory()->create();
+
         $response = $this->actingAs($this->user)
             ->get(route('tasks.edit', ['task' => $task]));
         $response->assertOk();
@@ -100,9 +103,10 @@ class TaskControllerTest extends TestCase
         $label = Label::factory()->create();
         $newTask = Task::factory()
             ->make()
-            ->only(['name', 'description', 'status_id', 'created_by_id', 'assigned_to_id']);
+            ->only(['name', 'description', 'status_id', 'assigned_to_id']);
 
         $data = array_merge($newTask, ['labels' => [$label->id]]);
+
         $response = $this->actingAs($this->user)
             ->patch(route('tasks.update', ['task' => $oldTask]), $data);
 
@@ -121,9 +125,11 @@ class TaskControllerTest extends TestCase
     public function testDelete()
     {
         $task = Task::factory()->create();
-        $user = User::find(1);
+        $user = $task->creator;
+
         $response = $this->actingAs($user)
             ->delete(route('tasks.destroy', ['task' => $task]));
+
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
 
