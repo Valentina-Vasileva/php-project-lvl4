@@ -12,7 +12,7 @@ use App\Models\TaskStatus;
 
 class TaskControllerTest extends TestCase
 {
-    private $user;
+    private User $user;
 
     protected function setUp(): void
     {

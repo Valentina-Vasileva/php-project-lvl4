@@ -10,7 +10,7 @@ use App\Models\Label;
 
 class LabelControllerTest extends TestCase
 {
-    private $user;
+    private User $user;
 
     protected function setUp(): void
     {

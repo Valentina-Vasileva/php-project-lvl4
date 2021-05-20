@@ -11,7 +11,7 @@ class Label extends Model
 
     protected $fillable = ['name', 'description'];
 
-    public function tasks()
+    public function tasks(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
         return $this->belongsToMany('App\Models\Task');
     }

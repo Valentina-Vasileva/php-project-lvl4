@@ -11,7 +11,7 @@ class TaskStatus extends Model
 
     protected $fillable = ['name'];
 
-    public function tasks()
+    public function tasks(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany('App\Models\Task', 'status_id');
     }

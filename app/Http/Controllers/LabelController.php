@@ -15,7 +15,7 @@ class LabelController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
     public function index()
     {
@@ -26,7 +26,7 @@ class LabelController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
     public function create()
     {
@@ -38,7 +38,7 @@ class LabelController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
@@ -58,7 +58,7 @@ class LabelController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Label  $label
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
     public function edit(Label $label)
     {
@@ -70,7 +70,7 @@ class LabelController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Label  $label
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, Label $label)
     {
@@ -88,18 +88,16 @@ class LabelController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  \App\Models\Label  $label
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Label $label)
     {
-        if ($label) {
-            if ($label->tasks()->exists()) {
-                flash(__('Failed to delete label'))->error();
-            } else {
-                $label->delete();
-                flash(__('Label has been deleted successfully'))->success();
-            }
+        if ($label->tasks()->exists()) {
+            flash(__('Failed to delete label'))->error();
+        } else {
+            $label->delete();
+            flash(__('Label has been deleted successfully'))->success();
         }
         return redirect()->route('labels.index');
     }

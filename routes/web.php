@@ -16,7 +16,7 @@ use App\Http\Controllers\LabelController;
 |
 */
 
-Route::get('/', function () {
+Route::get('/', function (): \Illuminate\View\View {
     return view('welcome');
 });
 
