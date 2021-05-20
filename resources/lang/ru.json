@@ -1,6 +1,7 @@
 {
     "Login": "Вход",
-    "Logout": "Выйти",
+    "Enter": "Войти",
+    "Logout": "Выход",
     "E-Mail Address": "Email",
     "Password": "Пароль",
     "Remember Me": "Запомнить меня",
