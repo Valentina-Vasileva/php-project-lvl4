@@ -62,7 +62,7 @@
             </div>
             <div class="form-row">
                 <div class="col">
-                    {{Form::submit(__('Edit'), array('class' => 'btn btn-primary mt-3'))}}
+                    {{Form::submit(__('Update'), array('class' => 'btn btn-primary mt-3'))}}
                 </div>
             </div>
             {{Form::close()}}
