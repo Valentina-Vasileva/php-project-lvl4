@@ -74,7 +74,10 @@ class TaskController extends Controller
         $task = $user->tasks()->make();
         $task->fill($data);
         $task->save();
-        $task->labels()->sync($data['labels']);
+
+        if (array_key_exists('labels', $data)) {
+            $task->labels()->sync($data['labels']);
+        }
 
         flash(__('Task has been added successfully'))->success();
         return redirect()->route('tasks.index');
