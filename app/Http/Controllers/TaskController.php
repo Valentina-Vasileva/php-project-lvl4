@@ -126,7 +126,11 @@ class TaskController extends Controller
         ]);
 
         $task->fill($data);
-        $task->labels()->sync($data['labels']);
+
+        if (array_key_exists('labels', $data)) {
+            $task->labels()->sync($data['labels']);
+        }
+
         $task->save();
 
         flash(__('Task has been updated successfully'))->success();
