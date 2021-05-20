@@ -51,5 +51,8 @@
     "Edit label": "Изменение метки",
     "Label has been added successfully": "Метка успешно создана",
     "Label has been updated successfully":"Метка успешно изменена",
-    "Label has been deleted successfully": "Метка успешно удалена"
+    "Label has been deleted successfully": "Метка успешно удалена",
+    "Hello from Hexlet!": "Привет от Хекслета!",
+    "Practical courses in programming": "Практические курсы по программированию",
+    "Learn more": "Узнать больше"
 }
