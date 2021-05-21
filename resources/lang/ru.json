@@ -11,6 +11,8 @@
     "Send Password Reset Link": "Прислать ссылку для сброса пароля",
     "Register": "Зарегистрировать",
     "Sign up": "Регистрация",
+    "The password must not be greater than :max characters.": "Пароль должен иметь длину не более :max символов",
+    "The password must be at least :min characters.": "Пароль должен иметь длину не менее :min символов",
     "Name": "Имя",
     "Verify Your Email Address": "Верифицировать адрес электронной почты",
     "A fresh verification link has been sent to your email address.": "Ссылка для верификации была послана на ваш адрес электронной почты",
