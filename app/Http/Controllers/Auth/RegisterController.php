@@ -55,6 +55,7 @@ class RegisterController extends Controller
         ], $messages = [
             'password.max' => __('The password must not be greater than :max characters.'),
             'password.min' => __('The password must be at least :min characters.'),
+            'password.confirmed' => __('The password and confirmation do not match.')
         ]);
     }
 
