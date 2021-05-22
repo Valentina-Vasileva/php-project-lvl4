@@ -4,25 +4,25 @@
 <div class="container">
     @include('flash::message')
     <h1 class="mb-5">{{ __('Tasks') }}</h1>
-    <div class="row my-3">
+    @if(Auth::check())
+    <div class="row">
         <div class="col">
-            {{Form::open(['url' => route('tasks.index'), 'method' => 'GET'])}}
-            {{Form::select('filter[status_id]', $taskStatuses, $filter['status_id'] ?? null, array('placeholder' => __('Status'), 'class' => 'form-control'))}}
+            <a href="{{ route('tasks.create') }}" class="btn btn-primary mb-2">{{ __('Create task') }}</a>
         </div>
+    </div>
+    @endif
+    <div class="row">
         <div class="col">
-            {{Form::select('filter[created_by_id]', $users, $filter['created_by_id'] ?? null, array('placeholder' => __('Author'), 'class' => 'form-control'))}}
-        </div>
-        <div class="col">
-            {{Form::select('filter[assigned_to_id]', $users, $filter['assigned_to_id'] ?? null, array('placeholder' => __('Executor'), 'class' => 'form-control'))}}
-        </div>
-        <div class="col">
-            {{Form::submit(__('Apply'), array('class' => 'btn btn-outline-primary'))}}
-            {{Form::close()}}
-        </div>
-        <div class="col">
-            @if(Auth::check())
-                <a href="{{ route('tasks.create') }}" class="btn btn-primary ml-5">{{ __('Create task') }}</a>
-            @endif
+            <div class="d-flex">
+                <div>
+                    {{Form::open(['url' => route('tasks.index'), 'method' => 'GET', 'class' => 'form-inline'])}}
+                    {{Form::select('filter[status_id]', $taskStatuses, $filter['status_id'] ?? null, array('placeholder' => __('Status'), 'class' => 'form-control my-2 mr-2'))}}
+                    {{Form::select('filter[created_by_id]', $users, $filter['created_by_id'] ?? null, array('placeholder' => __('Author'), 'class' => 'form-control my-2 mr-2'))}}
+                    {{Form::select('filter[assigned_to_id]', $users, $filter['assigned_to_id'] ?? null, array('placeholder' => __('Executor'), 'class' => 'form-control my-2 mr-2'))}}
+                    {{Form::submit(__('Apply'), array('class' => 'btn btn-outline-primary mr-2 my-2'))}}
+                    {{Form::close()}}
+                </div>
+            </div>
         </div>
     </div>
     <div class="row">
