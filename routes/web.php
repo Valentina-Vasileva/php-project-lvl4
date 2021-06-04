@@ -18,7 +18,8 @@ use App\Http\Controllers\LabelController;
 
 Route::get('/', function (): \Illuminate\View\View {
     return view('welcome');
-});
+})->name('welcome');
+;
 
 Auth::routes();
 
