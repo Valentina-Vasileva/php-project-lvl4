@@ -24,4 +24,4 @@
 `$ make start`
 
 #### Демо проекта:
-http://vvs-php-project-lvl4.herokuapp.com
+https://vvs-php-project-lvl4.herokuapp.com
