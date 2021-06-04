@@ -10,7 +10,7 @@
                 <div class="col-6">
                     <div class="form-group">
                         {{Form::label('name', __('Task name'))}}
-                        {{Form::text('name', '', array('class' => 'form-control'))}}
+                        {{Form::text('name', '', ['class' => 'form-control'])}}
                         @if ($errors->has('name'))
                             @error('name')
                                 <div class="invalid-feedback d-block">{{ $message }}</div>
@@ -23,7 +23,7 @@
                 <div class="col-6">
                     <div class="form-group">
                         {{Form::label('description', __('Description'))}}
-                        {{Form::textarea('description', null, array('class' => 'form-control', 'cols' => '50', 'rows' => '10'))}}
+                        {{Form::textarea('description', null, ['class' => 'form-control', 'cols' => '50', 'rows' => '10'])}}
                     </div>
                 </div>
             </div>
@@ -31,7 +31,7 @@
                 <div class="col-6">
                     <div class="form-group">
                         {{Form::label('status_id', __('Status'))}}
-                        {{Form::select('status_id', $taskStatuses, null, array('placeholder' => '----------', 'class' => 'form-control'))}}
+                        {{Form::select('status_id', $taskStatuses, null, ['placeholder' => '----------', 'class' => 'form-control'])}}
                         @if ($errors->has('status_id'))
                             @error('status_id')
                                 <div class="invalid-feedback d-block">{{ $message }}</div>
@@ -44,7 +44,7 @@
                 <div class="col-6">
                     <div class="form-group">
                         {{Form::label('assigned_to_id', __('Executor'))}}
-                        {{Form::select('assigned_to_id', $users, null, array('placeholder' => '----------', 'class' => 'form-control'))}}
+                        {{Form::select('assigned_to_id', $users, null, ['placeholder' => '----------', 'class' => 'form-control'])}}
                     </div>
                 </div>
             </div>
@@ -52,13 +52,13 @@
                 <div class="col-6">
                     <div class="form-group">
                         {{Form::label('label_id', __('Labels'))}}
-                        {{Form::select('label_id', $labels, null, array('multiple' => 'multiple', 'name' => 'labels[]', 'class' => 'form-control'))}}
+                        {{Form::select('label_id', $labels, null, ['multiple' => 'multiple', 'name' => 'labels[]', 'class' => 'form-control'])}}
                     </div>
                 </div>
             </div>
             <div class="form-row">
                 <div class="col">
-                    {{Form::submit(__('Create'), array('class' => 'btn btn-primary mt-3'))}}
+                    {{Form::submit(__('Create'), ['class' => 'btn btn-primary mt-3'])}}
                 </div>
             </div>
             {{Form::close()}}
