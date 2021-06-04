@@ -1,7 +1,8 @@
 ### Tests and linter status:
 [![Actions Status](https://github.com/Valentina-Vasileva/php-project-lvl4/workflows/hexlet-check/badge.svg)](https://github.com/Valentina-Vasileva/php-project-lvl4/actions)
 [![Tests and linter](https://github.com/Valentina-Vasileva/php-project-lvl4/actions/workflows/php.yml/badge.svg)](https://github.com/Valentina-Vasileva/php-project-lvl4/actions/workflows/php.yml)
-<a href="https://codeclimate.com/github/Valentina-Vasileva/php-project-lvl4/maintainability"><img src="https://api.codeclimate.com/v1/badges/f0631e570c544d0c0eeb/maintainability" /></a>
+[![Maintainability](https://api.codeclimate.com/v1/badges/f0631e570c544d0c0eeb/maintainability)](https://codeclimate.com/github/Valentina-Vasileva/php-project-lvl4/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/f0631e570c544d0c0eeb/test_coverage)](https://codeclimate.com/github/Valentina-Vasileva/php-project-lvl4/test_coverage)
 
 МЕНЕДЖЕР ЗАДАЧ
 ==============
