@@ -2,7 +2,6 @@
 
 @section('content')
 <div class="container">
-    @include('flash::message')
     <h1 class="mb-5">{{ __('Statuses') }}</h1>
     @if(Auth::check())
     <div class="row">
