@@ -44,6 +44,8 @@ class TaskStatusController extends Controller
     {
         $data = $request->validate([
             'name' => 'required|unique:task_statuses'
+        ], $messages = [
+            'unique' => __('The status name has already been taken'),
         ]);
 
         $taskStatus = new TaskStatus();
