@@ -45,6 +45,8 @@ class LabelController extends Controller
         $data = $request->validate([
             'name' => 'required|unique:labels',
             'description' => 'nullable|string'
+        ], $messages = [
+            'unique' => __('The label name has already been taken'),
         ]);
 
         $label = new Label();
