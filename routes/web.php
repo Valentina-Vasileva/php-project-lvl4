@@ -22,10 +22,8 @@ Route::get('/', function (): \Illuminate\View\View {
 
 Auth::routes();
 
-Route::resource('task_statuses', TaskStatusController::class)
-    ->except(['show']);
-
-Route::resource('tasks', TaskController::class);
-
-Route::resource('labels', LabelController::class)
-    ->except(['show']);
+Route::resources([
+    'task_statuses' => TaskStatusController::class,
+    'tasks' => TaskController::class,
+    'labels' => LabelController::class,
+]);
