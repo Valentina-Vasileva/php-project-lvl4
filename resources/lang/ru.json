@@ -41,6 +41,8 @@
     "Status has been deleted successfully": "Статус успешно удалён",
     "Failed to delete status": "Не удалось удалить статус",
     "The status name has already been taken":"Статус с таким именем уже существует",
+    "The label name has already been taken": "Метка с таким именем уже существует",
+    "The task name has already been taken": "Задача с таким именем уже существует",
     "Create task": "Создать задачу",
     "Task name": "Имя",
     "Author": "Автор",

@@ -118,7 +118,7 @@ return [
     'starts_with'          => 'Поле :attribute должно начинаться из одного из следующих значений: :values',
     'string'               => 'Поле :attribute должно быть строкой.',
     'timezone'             => 'Поле :attribute должно быть действительным часовым поясом.',
-    'unique'               => ':attribute с таким именем уже существует.',
+    'unique'               => 'Такое значение поля :attribute уже существует.',
     'uploaded'             => 'Загрузка поля :attribute не удалась.',
     'url'                  => 'Поле :attribute имеет ошибочный формат URL.',
     'uuid'                 => 'Поле :attribute должно быть корректным UUID.',

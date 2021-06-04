@@ -68,6 +68,8 @@ class TaskController extends Controller
             'description' => 'nullable|string',
             'assigned_to_id' => 'nullable|integer',
             'labels' => 'nullable|array'
+        ], $messages = [
+            'unique' => __('The task name has already been taken'),
         ]);
 
         $user = Auth::user();
