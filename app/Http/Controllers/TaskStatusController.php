@@ -45,13 +45,13 @@ class TaskStatusController extends Controller
         $data = $request->validate([
             'name' => 'required|unique:task_statuses'
         ], $messages = [
-            'unique' => __('The status name has already been taken'),
+            'unique' => __('validation.The status name has already been taken'),
         ]);
 
         $taskStatus = new TaskStatus();
         $taskStatus->fill($data);
         $taskStatus->save();
-        flash(__('Status has been added successfully'))->success();
+        flash(__('taskStatuses.Status has been added successfully'))->success();
         return redirect()->route('task_statuses.index');
     }
 
@@ -78,12 +78,12 @@ class TaskStatusController extends Controller
         $data = $request->validate([
             'name' => 'required|unique:task_statuses,name,' . $taskStatus->id
         ], $messages = [
-            'unique' => __('The status name has already been taken'),
+            'unique' => __('validation.The status name has already been taken'),
         ]);
 
         $taskStatus->fill($data);
         $taskStatus->save();
-        flash(__('Status has been updated successfully'))->success();
+        flash(__('taskStatuses.Status has been updated successfully'))->success();
         return redirect()->route('task_statuses.index');
     }
 
@@ -96,10 +96,10 @@ class TaskStatusController extends Controller
     public function destroy(TaskStatus $taskStatus)
     {
         if ($taskStatus->tasks()->exists()) {
-            flash(__('Failed to delete status'))->error();
+            flash(__('taskStatuses.Failed to delete status'))->error();
         } else {
             $taskStatus->delete();
-            flash(__('Status has been deleted successfully'))->success();
+            flash(__('taskStatuses.Status has been deleted successfully'))->success();
         }
         return redirect()->route('task_statuses.index');
     }

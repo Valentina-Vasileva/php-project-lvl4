@@ -46,13 +46,13 @@ class LabelController extends Controller
             'name' => 'required|unique:labels',
             'description' => 'nullable|string'
         ], $messages = [
-            'unique' => __('The label name has already been taken'),
+            'unique' => __('validation.The label name has already been taken'),
         ]);
 
         $label = new Label();
         $label->fill($data);
         $label->save();
-        flash(__('Label has been added successfully'))->success();
+        flash(__('labels.Label has been added successfully'))->success();
         return redirect()->route('labels.index');
     }
 
@@ -80,12 +80,12 @@ class LabelController extends Controller
             'name' => 'required|unique:labels,name,' . $label->id,
             'description' => 'nullable|string'
         ], $messages = [
-            'unique' => __('The label name has already been taken'),
+            'unique' => __('validation.The label name has already been taken'),
         ]);
 
         $label->fill($data);
         $label->save();
-        flash(__('Label has been updated successfully'))->success();
+        flash(__('labels.Label has been updated successfully'))->success();
         return redirect()->route('labels.index');
     }
 
@@ -98,10 +98,10 @@ class LabelController extends Controller
     public function destroy(Label $label)
     {
         if ($label->tasks()->exists()) {
-            flash(__('Failed to delete label'))->error();
+            flash(__('labels.Failed to delete label'))->error();
         } else {
             $label->delete();
-            flash(__('Label has been deleted successfully'))->success();
+            flash(__('labels.Label has been deleted successfully'))->success();
         }
         return redirect()->route('labels.index');
     }

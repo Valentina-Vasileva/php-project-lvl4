@@ -69,7 +69,7 @@ class TaskController extends Controller
             'assigned_to_id' => 'nullable|integer',
             'labels' => 'nullable|array'
         ], $messages = [
-            'unique' => __('The task name has already been taken'),
+            'unique' => __('validation.The task name has already been taken'),
         ]);
 
         $user = Auth::user();
@@ -81,7 +81,7 @@ class TaskController extends Controller
             $task->labels()->sync($data['labels']);
         }
 
-        flash(__('Task has been added successfully'))->success();
+        flash(__('tasks.Task has been added successfully'))->success();
         return redirect()->route('tasks.index');
     }
 
@@ -126,7 +126,7 @@ class TaskController extends Controller
             'assigned_to_id' => 'nullable|integer',
             'labels' => 'nullable|array'
         ], $messages = [
-            'unique' => __('The task name has already been taken'),
+            'unique' => __('validation.The task name has already been taken'),
         ]);
 
         $task->fill($data);
@@ -137,7 +137,7 @@ class TaskController extends Controller
 
         $task->save();
 
-        flash(__('Task has been updated successfully'))->success();
+        flash(__('tasks.Task has been updated successfully'))->success();
         return redirect()->route('tasks.index');
     }
 
@@ -151,7 +151,7 @@ class TaskController extends Controller
     {
         $task->delete();
 
-        flash(__('Task has been deleted successfully'))->success();
+        flash(__('tasks.Task has been deleted successfully'))->success();
         return redirect()->route('tasks.index');
     }
 }
