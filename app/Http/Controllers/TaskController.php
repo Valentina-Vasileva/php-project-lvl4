@@ -76,10 +76,7 @@ class TaskController extends Controller
         $task = $user->tasks()->make();
         $task->fill($data);
         $task->save();
-
-        if (array_key_exists('labels', $data)) {
-            $task->labels()->sync($data['labels']);
-        }
+        $task->labels()->sync($request->labels);
 
         flash(__('tasks.Task has been added successfully'))->success();
         return redirect()->route('tasks.index');
@@ -130,11 +127,7 @@ class TaskController extends Controller
         ]);
 
         $task->fill($data);
-
-        if (array_key_exists('labels', $data)) {
-            $task->labels()->sync($data['labels']);
-        }
-
+        $task->labels()->sync($request->labels);
         $task->save();
 
         flash(__('tasks.Task has been updated successfully'))->success();
