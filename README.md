@@ -18,7 +18,8 @@
 
 #### Установка:
 1. `$ git clone https://github.com/Valentina-Vasileva/php-project-lvl4`
-2. `$ make setup`
+2. `$ cd php-project-lvl4`
+3. `$ make setup`
 
 #### Локальный запуск:
 `$ make start`
