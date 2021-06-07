@@ -56,7 +56,7 @@
                 <div class="col-6">
                     <div class="form-group">
                         {{Form::label('label_id', __('labels.Labels'))}}
-                        {{Form::select('label_id', $labels, $task->labels, ['multiple' => 'multiple', 'name' => 'labels[]', 'class' => 'form-control'])}}
+                        {{Form::select('label_id', $labels, $task->labels, ['placeholder' => '', 'multiple' => 'multiple', 'name' => 'labels[]', 'class' => 'form-control'])}}
                     </div>
                 </div>
             </div>

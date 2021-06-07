@@ -76,7 +76,8 @@ class TaskController extends Controller
         $task = $user->tasks()->make();
         $task->fill($data);
         $task->save();
-        $task->labels()->sync($request->labels);
+        $labels = isset($request->labels[0]) ? $request->labels : [];
+        $task->labels()->sync($labels);
 
         flash(__('tasks.Task has been added successfully'))->success();
         return redirect()->route('tasks.index');
@@ -127,7 +128,10 @@ class TaskController extends Controller
         ]);
 
         $task->fill($data);
-        $task->labels()->sync($request->labels);
+
+        $labels = isset($request->labels[0]) ? $request->labels : [];
+        $task->labels()->sync($labels);
+
         $task->save();
 
         flash(__('tasks.Task has been updated successfully'))->success();
