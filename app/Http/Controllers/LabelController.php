@@ -99,10 +99,11 @@ class LabelController extends Controller
     {
         if ($label->tasks()->exists()) {
             flash(__('labels.Failed to delete label'))->error();
-        } else {
-            $label->delete();
-            flash(__('labels.Label has been deleted successfully'))->success();
+            return back();
         }
+
+        $label->delete();
+        flash(__('labels.Label has been deleted successfully'))->success();
         return redirect()->route('labels.index');
     }
 }

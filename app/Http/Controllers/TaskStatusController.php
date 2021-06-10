@@ -97,10 +97,11 @@ class TaskStatusController extends Controller
     {
         if ($taskStatus->tasks()->exists()) {
             flash(__('taskStatuses.Failed to delete status'))->error();
-        } else {
-            $taskStatus->delete();
-            flash(__('taskStatuses.Status has been deleted successfully'))->success();
+            return back();
         }
+
+        $taskStatus->delete();
+        flash(__('taskStatuses.Status has been deleted successfully'))->success();
         return redirect()->route('task_statuses.index');
     }
 }
