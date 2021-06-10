@@ -74,9 +74,11 @@ class TaskControllerTest extends TestCase
 
         $response = $this->actingAs($this->user)
             ->post(route('tasks.store'), $data);
+
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
 
+        $this->get(route('tasks.index'))->assertSee($task['name']);
         $this->assertDatabaseHas('tasks', array_merge($task, ['created_by_id' => $this->user->id]));
     }
 

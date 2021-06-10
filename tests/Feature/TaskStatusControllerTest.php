@@ -54,9 +54,11 @@ class TaskStatusControllerTest extends TestCase
 
         $response = $this->actingAs($this->user)
             ->post(route('task_statuses.store'), $data);
+
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
 
+        $this->get(route('task_statuses.index'))->assertSee($data['name']);
         $this->assertDatabaseHas('task_statuses', $data);
     }
 
