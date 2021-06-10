@@ -10,6 +10,7 @@ use App\Models\User;
 
 class TaskStatusControllerTest extends TestCase
 {
+    use RefreshDatabase;
 
     private User $user;
 
