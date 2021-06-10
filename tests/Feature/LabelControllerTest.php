@@ -2,15 +2,12 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 use App\Models\User;
 use App\Models\Label;
 
 class LabelControllerTest extends TestCase
 {
-    use RefreshDatabase;
-
     private User $user;
 
     protected function setUp(): void

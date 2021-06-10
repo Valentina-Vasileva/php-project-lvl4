@@ -2,7 +2,6 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 use App\Models\User;
 use App\Models\Task;
@@ -11,8 +10,6 @@ use App\Models\TaskStatus;
 
 class TaskControllerTest extends TestCase
 {
-    use RefreshDatabase;
-
     private User $user;
 
     protected function setUp(): void
